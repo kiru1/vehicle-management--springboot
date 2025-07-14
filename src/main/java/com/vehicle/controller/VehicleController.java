@@ -21,37 +21,37 @@ import com.vehicle.service.VehicleService;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/vehicles")
 public class VehicleController {
-    @Autowired
-    private VehicleService vehicleService;
+	@Autowired
+	private VehicleService vehicleService;
 
-    @PostMapping("/save")
-    public Vehicle createVehicle(@RequestBody Vehicle vehicle) {
-    	vehicle.setVehicleId(null);
-    	
-        return vehicleService.createVehicle(vehicle);
-    }
+	@PostMapping("/save")
+	public Vehicle createVehicle(@RequestBody Vehicle vehicle) {
+		vehicle.setVehicleId(null);
 
-    @GetMapping("/getAll")
+		return vehicleService.createVehicle(vehicle);
+	}
 
-    @ResponseBody
-    public List<Vehicle> getAllVehicles() {
-        return vehicleService.getAllVehicles();
-    }
+	@GetMapping("/getAll")
 
-    @GetMapping("/findById/{id}")
+	@ResponseBody
+	public List<Vehicle> getAllVehicles() {
+		return vehicleService.getAllVehicles();
+	}
 
-    public ResponseEntity<Vehicle> getVehicleById(@PathVariable Long id) {
-        return ResponseEntity.ok(vehicleService.getVehicleById(id));
-    }
+	@GetMapping("/findById/{id}")
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Vehicle> updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle) {
-        return ResponseEntity.ok(vehicleService.updateVehicle(id, vehicle));
-    }
+	public ResponseEntity<Vehicle> getVehicleById(@PathVariable Long id) {
+		return ResponseEntity.ok(vehicleService.getVehicleById(id));
+	}
 
-    @DeleteMapping("/deleteById/{id}")
-    public ResponseEntity<Void> deleteVehicle(@PathVariable Long id) {
-        vehicleService.deleteVehicle(id);
-        return ResponseEntity.noContent().build();
-    }
+	@PutMapping("/update/{id}")
+	public ResponseEntity<Vehicle> updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle) {
+		return ResponseEntity.ok(vehicleService.updateVehicle(id, vehicle));
+	}
+
+	@DeleteMapping("/deleteById/{id}")
+	public ResponseEntity<Void> deleteVehicle(@PathVariable Long id) {
+		vehicleService.deleteVehicle(id);
+		return ResponseEntity.noContent().build();
+	}
 }
